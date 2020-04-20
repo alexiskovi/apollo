@@ -20,7 +20,8 @@ class GSupervisor : public apollo::cyber::TimerComponent {
  public:
   bool Init() override;
   bool Proc() override;
-  void FatalSignal();
+  void ErrorSignal();
+  void WarningSignal();
   ~GSupervisor();
  private:
   std::shared_ptr<cyber::Reader<apollo::supervisor::SV_info>>
