@@ -7,7 +7,6 @@ IMUSupervisor::IMUSupervisor()
     : SupervisorRunner("IMUSupervisor", 1) {}
 
 void IMUSupervisor::RunOnce(const double current_time) {
-  AERROR << "Giving error at IMU module!";
   status_ = 25;
   debug_msg_ = "Check your calibration!";
 }

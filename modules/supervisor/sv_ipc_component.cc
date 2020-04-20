@@ -12,7 +12,7 @@ bool IPCSupervisor::Init() {
 
   std::shared_ptr<apollo::cyber::Node> supervisor_node_(
       apollo::cyber::CreateNode("supervisor_ipc"));
-  auto writer_ = supervisor_node_->CreateWriter<apollo::supervisor::SV_info>("supervisor/general");
+  writer_ = supervisor_node_->CreateWriter<apollo::supervisor::SV_info>("supervisor/general");
   return true;
 }
 
@@ -40,7 +40,7 @@ bool IPCSupervisor::Proc() {
   msg.mutable_header()->set_timestamp_sec(Time::Now().ToSecond());
   msg.set_status(overall_status);
   msg.set_message(debug);
-  writer_->Write(std::make_shared<SV_info>(msg));
+  writer_->Write(msg);
 
   return true;
 }
