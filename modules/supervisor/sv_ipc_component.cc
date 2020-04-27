@@ -12,7 +12,7 @@ bool IPCSupervisor::Init() {
 
   std::shared_ptr<apollo::cyber::Node> supervisor_node_(
       apollo::cyber::CreateNode("supervisor_ipc"));
-  writer_ = supervisor_node_->CreateWriter<apollo::supervisor::SV_info>("supervisor/general");
+  writer_ = supervisor_node_->CreateWriter<apollo::supervisor::SV_info>("/supervisor/general");
   return true;
 }
 

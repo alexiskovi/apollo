@@ -1,7 +1,21 @@
 #pragma once
 
+#include <memory>
+#include <vector>
+#include <cstdlib>
+#include <thread>
+
+#include "cyber/component/timer_component.h"
+#include "cyber/cyber.h"
+#include "cyber/time/time.h"
+#include "cyber/time/duration.h"
 #include "modules/supervisor/common/supervisor_runner.h"
 #include "cyber/common/log.h"
+#include "modules/common/adapters/adapter_gflags.h"
+#include "cyber/component/timer_component.h"
+#include "modules/supervisor/proto/imu_priority.pb.h"
+#include "modules/drivers/gnss/proto/ins.pb.h"
+
 
 namespace apollo {
 namespace supervisor {
@@ -14,6 +28,9 @@ class IMUSupervisor : public SupervisorRunner {
  private:
   int status_;
   std::string debug_msg_;
+  std::shared_ptr<apollo::cyber::Node> sv_sub_node_;
+  std::shared_ptr<apollo::cyber::Reader<apollo::drivers::gnss::InsStat>> imu_reader_;
+  SV_IMU_Conf imu_conf_;
 };
 
 }
