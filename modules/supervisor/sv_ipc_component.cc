@@ -1,6 +1,6 @@
-#include "modules/common/time/time.h"
 #include "modules/supervisor/sv_ipc_component.h"
 #include "modules/supervisor/software/imu_supervisor.h"
+#include "modules/supervisor/software/gnss_supervisor.h"
 
 using apollo::cyber::Time;
 
@@ -9,6 +9,7 @@ namespace supervisor {
 
 bool IPCSupervisor::Init() {
   supervisors_.emplace_back(new IMUSupervisor());
+  supervisors_.emplace_back(new GNSSSupervisor());
 
   std::shared_ptr<apollo::cyber::Node> supervisor_node_(
       apollo::cyber::CreateNode("supervisor_ipc"));

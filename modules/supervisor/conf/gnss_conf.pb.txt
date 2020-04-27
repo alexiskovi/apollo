@@ -1,0 +1,4 @@
+timeout_priority: 26
+max_differential_age: 5.0
+differential_age_timeout_priority: 28
+bad_sol_status_priority: 28
